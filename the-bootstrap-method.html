@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 The Bootstrap Method | Statistics: A Critical Look</title>
+  <meta name="description" content="4 The Bootstrap Method | Statistics: A Critical Look" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 The Bootstrap Method | Statistics: A Critical Look" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 The Bootstrap Method | Statistics: A Critical Look" />
+  
+  
+  
+
+<meta name="author" content="CK" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-infamous-n-30-rule.html"/>
+<link rel="next" href="permutation-randomization-tests.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics: A Critical Look</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="some-preliminary-questions.html"><a href="some-preliminary-questions.html"><i class="fa fa-check"></i><b>1</b> Some Preliminary Questions</a></li>
+<li class="chapter" data-level="2" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>2</b> Sampling Distributions</a><ul>
+<li class="chapter" data-level="2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#how-to-construct-a-sampling-distribution"><i class="fa fa-check"></i><b>2.1</b> How to Construct a Sampling Distribution?</a></li>
+<li class="chapter" data-level="2.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#some-questions-to-ponder"><i class="fa fa-check"></i><b>2.2</b> Some Questions to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html"><i class="fa fa-check"></i><b>3</b> The Infamous ‘n &gt; 30 rule’</a><ul>
+<li class="chapter" data-level="3.1" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.2" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#explorations-with-real-data"><i class="fa fa-check"></i><b>3.2</b> Explorations with Real Data</a><ul>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#nba-player-salaries"><i class="fa fa-check"></i>NBA Player Salaries</a></li>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#undergraduates-in-us-colleges-and-universities"><i class="fa fa-check"></i>Undergraduates in US Colleges and Universities</a></li>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#departure-delays-in-laguardia-airport"><i class="fa fa-check"></i>Departure Delays in LaGuardia Airport</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#some-questions-to-ponder-1"><i class="fa fa-check"></i><b>3.3</b> Some Questions to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html"><i class="fa fa-check"></i><b>4</b> The Bootstrap Method</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-sampling-distribution"><i class="fa fa-check"></i><b>4.1</b> Bootstrap Sampling Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>4.2</b> Bootstrap Confidence Intervals</a><ul>
+<li class="chapter" data-level="" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-se-plug-in-method"><i class="fa fa-check"></i>Bootstrap SE Plug-in Method</a></li>
+<li class="chapter" data-level="" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-percentile-method"><i class="fa fa-check"></i>Bootstrap Percentile Method</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#things-to-ponder"><i class="fa fa-check"></i><b>4.3</b> Things to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html"><i class="fa fa-check"></i><b>5</b> Permutation (Randomization) Tests</a><ul>
+<li class="chapter" data-level="5.1" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#alternative-to-the-two-sample-t-test"><i class="fa fa-check"></i><b>5.1</b> Alternative to the Two Sample t-test</a></li>
+<li class="chapter" data-level="5.2" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#application-to-categorical-data"><i class="fa fa-check"></i><b>5.2</b> Application to Categorical Data</a></li>
+<li class="chapter" data-level="5.3" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#application-to-linear-regression"><i class="fa fa-check"></i><b>5.3</b> Application to Linear Regression</a><ul>
+<li class="chapter" data-level="" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#things-to-ponder-1"><i class="fa fa-check"></i><b>5.4</b> Things to ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html"><i class="fa fa-check"></i><b>6</b> P-values, Jelly-Beans, and Mosquitoes</a><ul>
+<li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
+<li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
+<li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics: A Critical Look</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-bootstrap-method" class="section level1">
+<h1><span class="header-section-number">4</span> The Bootstrap Method</h1>
+<p>In short, the Bootstrap is a technique that we can use to get an idea about the sampling distribution of a statistic. It helps us to calculate the variability (standard error) of that statistic and also give us important clues about the shape of its TRUE sampling distribution.</p>
+<p>In addition, the Bootstrap method is a easy to use alternative to construct confidence intervals for population parameters especially when classical theory (which based on the Central Limit Theorem) is questionable or does not apply.</p>
+<p>In summary, it is another (useful) tool in our toolbox. But, it is NOT necessarily a `better’ tool. It depends on what we mean by ‘better’. In this chapter we will explore the pros and cons of this new method. Let’s dive it.</p>
+<div id="bootstrap-sampling-distribution" class="section level2">
+<h2><span class="header-section-number">4.1</span> Bootstrap Sampling Distribution</h2>
+
+<div class="example">
+<span id="exm:unnamed-chunk-33" class="example"><strong>Example 4.1  </strong></span>Recall the service time distribution in Example 2.1. Service times to complete a task like repir a car, restaurent take-out order, etc. typically have a distribution of this type.
+</div>
+
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>What we normally see is a sample from the above population which may look like this:</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/fig:service30%20-1.png" width="672" /></p>
+<p>The sample mean is:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">mean</span>(mysample)</a></code></pre></div>
+<pre><code>## [1] 22.04726</code></pre>
+<p>But, we’d like to know how accurate this estimate is. That is, we would like to know the standard error. In this case, the sample statistic is quite simple. It is the sample average <span class="math inline">\(\bar x\)</span>. We know how to find the standard error of this statistics using the <span class="math inline">\(Var(\cdot)\)</span> operator (Refer to you HW in Chapter 2). Here is the answer:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">sd</span>(mysample)<span class="op">/</span><span class="kw">sqrt</span>(n)</a></code></pre></div>
+<pre><code>## [1] 4.016029</code></pre>
+<p>We also learned in Chapter 2 that the standard error is nothing but the spread (std. dev) of the sampling distribution of <span class="math inline">\(\bar x\)</span>. Is there a way to find the sampling distribution of <span class="math inline">\(\bar x\)</span>?</p>
+<p>Unfortunately, as we discussed in Chapter 2, it is not possible to find the sampling distribution of a statistic. This is where the bootstrap method comes in handy. Here is how we use it.</p>
+<p><strong>What we have:</strong><br />
+A single random sample from the population. In this case a sample of size <span class="math inline">\(n=30\)</span>.</p>
+<p><strong>What we assume:</strong></p>
+<p>This sample is a good enough representation of the population. In other word, the shape and spread of <em>this sample</em> is similar to the population.</p>
+<p><br />
+</p>
+<p>We then proceed as if this sample is our “population”. The rest of the steps is <em>almost</em> identical to what we had in Chapter 2, when we build the sampling distribution of <span class="math inline">\(\bar x\)</span>.</p>
+<ul>
+<li><p>Take a random sample of size <span class="math inline">\(n\)</span> (30 in this case) from this sample <strong>with replacement</strong> and calculate (and store) the statistic we want. Doing the sampling with replacement is the crucial point here. If we did not replace the data points, we will end up with the sample. For example, if our sample is (1,2,3), a resample with replacement looks like this: (2,2,3). Another resample might be (1,1,1). Since the sampling is done with replacement, we call these new samples bootstrap samples.</p></li>
+<li><p>Then take another bootstrap random sample of the same size as above and calculate (and store) the statistic we want.</p></li>
+<li><p>Repeat this process a large number of times. This will give us a collection of values for the statistic. We call these ‘bootstrap sample statistics’. For example, if we studying the sample mean <span class="math inline">\(\bar x\)</span> we will have a bunch of bootstrap sample means corresponding to each of the bootstrap samples.</p></li>
+<li><p>Plot these bootstrap sample statistics in a histogram. This will give us a graphical representation of the variance of the statistic.</p></li>
+</ul>
+<p><br />
+The following plot shows the bootstrap sampling distribution of <span class="math inline">\(\bar x\)</span> constructed out of the above random sample.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>One of the main reasons that we use the Bootstrap method is to get an idea of the uncertainty of our sample mean (<span class="math inline">\(\bar x\)</span>). In our case, the sample mean was 22.01. But we wanted to find the uncertainty of this estimate which is nothing but the spread of the true sampling distribution of <span class="math inline">\(\bar x\)</span>. Since the bootstrap sampling distribution is an approximation of the true sampling distribution, we can calculate the spread of the bootstrap sampling distribution to get an estimate of the true standard error. As the table below shows, this method is extremely accurate.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">True SE</th>
+<th align="left">Bootstrap SE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">4.01</td>
+<td align="left">3.95</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Copy and paste the following R commands in R Studio to open an app to experiment with this data so that you can convince yourself that the Bootstrap SE is a reasonable estimate of the true SE.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="kw">runGitHub</span>(<span class="dt">repo =</span> <span class="st">&quot;gitcnk/Apps/&quot;</span>, <span class="dt">subdir=</span><span class="st">&#39;BootstrapSE&#39;</span>)</a></code></pre></div>
+<p><br />
+After experimenting with the app you must be (hopefully) convinced that the Bootstrap method provides an alternative to find the standard error of a statistic. But, you might wonder why do we need an alternative when we already know how to find it theoretically. The reason is, sometimes (in fact in many real life cases), the statistic we are interested in is a more complicated one. Consider the following example:</p>
+<p><br />
+</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-39" class="example"><strong>Example 4.2  </strong></span>Suppose you are interested in the correlation between amount of sleep and GPA.
+</div>
+
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>The sample correlation coefficient (<span class="math inline">\(r\)</span>) for this data is 0.88. As before, we would like to know the standard error (SE) of this statistic. The sample correlation coefficient is defined as
+<span class="math display">\[ r = \frac{\sum_{i=1}^n (x_i - \bar x)(y_i - \bar y) }{sd_x sd_y}\]</span></p>
+<p>It is virtually impossible to find the variance (<span class="math inline">\(Var[ \ r\ ]\)</span>) of the above expression. Note that ratios of random variables are notoriously difficult to handle. But we can use the Bootstrap method to find an estimate of the SE using the Bootstrap sampling distribution of the correlation coefficient, <span class="math inline">\(r\)</span>. The following plot shows the Bootstrap sampling distribution of <span class="math inline">\(r\)</span> from the above dataset.</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><br />
+Based on this analysis we can say the following about the sleep v. GPA data:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">True correlation</th>
+<th align="left">Sample correlation (<span class="math inline">\(r\)</span>)</th>
+<th align="left">True Standard Error</th>
+<th align="left">Bootstrap Standard Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">We’ll never know</td>
+<td align="left">0.88</td>
+<td align="left">Very Difficult to find</td>
+<td align="left">0.035</td>
+</tr>
+</tbody>
+</table>
+<p>One thing to stress here is that, we would never know the true correlation or its variance. However, the above table provides a better understanding of what it might be. It tells us that the sample correlation is 0.88 but the uncertainly is on average, about 0.035 units. Hopefully, this example will convince you to believe the utility of the Bootstrap method as technique to find the standard error of any statistic. Simply create the bootstrap sampling distribution and find its spread (standard deviation). To drive this point, let us look at another example.</p>
+<p><br />
+</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-42" class="example"><strong>Example 4.3  </strong></span>This was a study on in-hospital deaths from myocardial infarction with ST elevation (STEMI) which was done in Oregon. Summary stats of the study is as follows:</p>
+<ul>
+<li>9 hospitals in the Providence Health system in Oregon.</li>
+<li>Study period : from 2002 to 2003.</li>
+<li>913 STEMI patients treated, of whom 105 died (in-hospital deaths) from myocardial infarction with ST elevation (STEMI).</li>
+<li>Each patient was assigned a Thrombolysis in Myocardial Infarction Risk Scores</li>
+</ul>
+</div>
+
+<p>The following table contains data grouped by risk score. In addition, information about the national mortality rate for each risk category is also given.</p>
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Risk_score</th>
+<th align="right">Patients</th>
+<th align="right">Deaths</th>
+<th align="right">NRMI_Mortality_in_percents</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">34</td>
+<td align="right">0</td>
+<td align="right">0.17</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0.67</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">88</td>
+<td align="right">1</td>
+<td align="right">1.70</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">73</td>
+<td align="right">1</td>
+<td align="right">2.88</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">91</td>
+<td align="right">4</td>
+<td align="right">5.32</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">110</td>
+<td align="right">11</td>
+<td align="right">9.43</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="right">94</td>
+<td align="right">19</td>
+<td align="right">14.12</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="right">70</td>
+<td align="right">19</td>
+<td align="right">18.86</td>
+</tr>
+<tr class="odd">
+<td align="left">8</td>
+<td align="right">51</td>
+<td align="right">8</td>
+<td align="right">19.93</td>
+</tr>
+<tr class="even">
+<td align="left">9</td>
+<td align="right">47</td>
+<td align="right">12</td>
+<td align="right">24.30</td>
+</tr>
+<tr class="odd">
+<td align="left">10</td>
+<td align="right">31</td>
+<td align="right">6</td>
+<td align="right">26.22</td>
+</tr>
+<tr class="even">
+<td align="left">11–14</td>
+<td align="right">21</td>
+<td align="right">7</td>
+<td align="right">33.42</td>
+</tr>
+<tr class="odd">
+<td align="left">No score</td>
+<td align="right">128</td>
+<td align="right">17</td>
+<td align="right">14.42</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall Question:</strong> How “good” is this hospital system (in terms of death rates) compared to the national level?</p>
+<p>How could we begin to answer this question? You might suggest to look at the expected deaths <strong>IF</strong> the mortality rate for the hospital system is the same as the national rate. For example, for risk level 5, the expected number of deaths is <span class="math inline">\(110*9.43\% \ = 10.37\)</span>, which is not that different from the actual death count of 11. If we do this for all risk levels we get a column of expected deaths. From that we can look at the difference between the observed and the expected deaths. But, there is a problem in this approach. Consider the following two cases:</p>
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Case 1</th>
+<th align="left">Case 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Observed = 10</td>
+<td align="left">Observed = 100</td>
+</tr>
+<tr class="even">
+<td align="left">Expected = 5</td>
+<td align="left">Expected = 95</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>In both cases, the difference is 5, but we can all agree that a deviation of 5 is more severe in Case 1 than it is in Case 2. A better approach is to look at the ratio between the observed and the expected counts as shown below:</p>
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Risk_score</th>
+<th align="right">Deaths</th>
+<th align="right">Expected.Deaths</th>
+<th align="right">OEratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">0</td>
+<td align="right">0.058</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">0</td>
+<td align="right">0.503</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">1.496</td>
+<td align="right">0.668</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">1</td>
+<td align="right">2.102</td>
+<td align="right">0.476</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">4</td>
+<td align="right">4.841</td>
+<td align="right">0.826</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">11</td>
+<td align="right">10.373</td>
+<td align="right">1.060</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="right">19</td>
+<td align="right">13.273</td>
+<td align="right">1.431</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="right">19</td>
+<td align="right">13.202</td>
+<td align="right">1.439</td>
+</tr>
+<tr class="odd">
+<td align="left">8</td>
+<td align="right">8</td>
+<td align="right">10.164</td>
+<td align="right">0.787</td>
+</tr>
+<tr class="even">
+<td align="left">9</td>
+<td align="right">12</td>
+<td align="right">11.421</td>
+<td align="right">1.051</td>
+</tr>
+<tr class="odd">
+<td align="left">10</td>
+<td align="right">6</td>
+<td align="right">8.128</td>
+<td align="right">0.738</td>
+</tr>
+<tr class="even">
+<td align="left">11–14</td>
+<td align="right">7</td>
+<td align="right">7.018</td>
+<td align="right">0.997</td>
+</tr>
+<tr class="odd">
+<td align="left">No score</td>
+<td align="right">17</td>
+<td align="right">18.458</td>
+<td align="right">0.921</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>If the death rates in this hospital system is about the same as the national rate, then we would expect these ratios to be close to 1 and hence the average of these difference should be close to 1. For this data, the mean of these ratios is 0.8 (0.7997 to be exact). Since this value is less than one, it is good news for the hospital system. It implies that they are doing better compared to the nation. But we need to know the uncertainty (standard error) of this estimate. Calculating the exact standard error of this ratio is quite difficult. However, we can use the bootstrap to come up with a reasonable estimate of the standard error.</p>
+<p>As before, we’ll resample the 13 ratios with replacement and build the bootstrap sampling distribution. Then we measure the spread (standard deviation) of this bootstrap distribution to find the standard error of the ratio.</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>The spread of the bootstrap sampling distribution (standard deviation) is 0.1189. Combining this with the mean ratio of 0.8, we can say that the death rate of this hospital system is 0.8 times the national rate, with an uncertainty of 0.12. This is encouraging news to the hospital system. In addition, you can see from the above plot, a large number of the bootstrap ratios are less than one which suggests that the <strong>TRUE</strong> death rate would probably be less than 1 as well. But we don’t quite know that. That is the kind of inference we would like to draw. We will get to that in the next section. But before that we need take stock of what we’ve learned so far.</p>
+<p><br />
+</p>
+<p><strong>Brief Summary</strong></p>
+<ul>
+<li><p>Example 1: Established that we can use the bootstrap method to find the standard error of a statistic.</p></li>
+<li><p>Example 2 and 3: Discussed how the bootstrap method help us in finding standard errors of complicated statistic, like the correlation coefficient and unfamiliar ratios of random variables.</p></li>
+</ul>
+</div>
+<div id="bootstrap-confidence-intervals" class="section level2">
+<h2><span class="header-section-number">4.2</span> Bootstrap Confidence Intervals</h2>
+<p>As alluded at the end of section 4.1, we would like to make inferences about population parameters like the TRUE(population) mean or the TRUE correlation or TRUE death rate ratio. In classical statistics, we did this using confidence intervals. For example, we can use the random sample in example 1 (service time) to build a confidence interval for the TRUE average service time. In classical statistics, we do this using the following formula:</p>
+<p><span class="math display">\[ \bar x \ \pm \ t_{score} \ .  SE(\bar x) \]</span></p>
+<p><span class="math display">\[ \bar x \ \pm \ t_{score} \ .  \frac{S}{\sqrt n} \]</span></p>
+<p>where <span class="math inline">\(S\)</span> is the sample standard deviation. The final interval can be easily calculated using R as follows:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">t.test</span>( <span class="dt">x =</span> mysample)<span class="op">$</span>conf.int</a></code></pre></div>
+<pre><code>## [1] 13.83355 30.26096
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>Now let us see how to use the Bootstrap method to construct a confidence interval from the same sample. There are 3 main approaches, but we are going to learn only two of them. The other is beyond the scope of undergraduate work.</p>
+<div id="bootstrap-se-plug-in-method" class="section level3 unnumbered">
+<h3>Bootstrap SE Plug-in Method</h3>
+<p>As the name implies, we simply use the bootstrap SE and plug that value in as an estimate for the actual Standard error of the statistic. For the above example, we can use the bootstrap estimate of SE, which was 3.95, and compute the confidence interval. This method works well if the bootstrap sampling distribution is roughly normal. For other cases, it will not produce good results. Therefore, this method is not very helpful with more complicated statistics.</p>
+</div>
+<div id="bootstrap-percentile-method" class="section level3 unnumbered">
+<h3>Bootstrap Percentile Method</h3>
+<p>The second method is more flexible, in that, it does not require the bootstrap sampling distribution to be normal. If we are calculating a 95% confidence interval, we simply find the <span class="math inline">\(2.5^{th}\)</span> and the <span class="math inline">\(97.5^{th}\)</span> percentiles of the bootstrap sampling distribution and those are our lower and upper confidence limits. For example, for the service time data, the confidence bounds are shown in the figure below.</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>The 95% bootstrap confidence interval for the TRUE average service time (<span class="math inline">\(\mu\)</span>) is [14.74, 30.17]. The corresponding 95% classical confidence interval is [13.83, 30.26]. As you can see, the two intervals do not differ much. Can you think what the reason might be?</p>
+<p><br />
+</p>
+<p>The real question that you already might be asking in your head is:<br />
+<em>“Why do we need these bootstrap confidence intervals when we already know how to find confidence intervals based on CLT?”</em><br />
+</p>
+<p>As in the case of calculating standard errors, the real benefit of this method comes when we <strong>DO NOT</strong> have classical confidence intervals or when it is <strong>extremely difficult</strong> to find one. Consider the correlation example we looked at (Example 4.2). There is no easy way to find a confidence interval for the TRUE correlation (<span class="math inline">\(\rho\)</span>). But the bootstrap provides an easy alternative. The following plot shows the confidence bounds calculated from the correlation data.</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>The 95% bootstrap confidence interval is [0.8 , 0.94]. As you can see in the above plot, the bootstrap sampling distribution is quite skewed. Yet we can use the bootstrap percentile method to find a 95% confidence interval for the unknown parameter. This is another benefit of bootstrap confidence intervals. They do not require that the sampling distribution of the sample statistic being normal. As you recall, normality of the sampling distribution is a crucial assumption in classical confidence intervals that are based on the central limit theorem.</p>
+<p>To wrap up this section, let us calculate a 95% bootstrap confidence interval for the death rate data. The following plot shows the confidence bounds.</p>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>The 95% bootstrap confidence interval is for the TRUE observed/expected death ratio is [0.56 , 1.03]. This is very important information for the hospital system. If you recall, the mean sample ratio was 0.8, which suggested that this hospital system is doing “better” compared to the national rate. But the confidence interval gave us a better understanding of the situation. Based on this interval, you can conclude that the this hospital system is not that different from the nation in terms of heart disease deaths. The apparent 0.8 (‘better’ performance) is a result of chance. Can you think how I arrived at this conclusion? That would be part of your HW :)</p>
+</div>
+</div>
+<div id="things-to-ponder" class="section level2">
+<h2><span class="header-section-number">4.3</span> Things to Ponder</h2>
+<p><strong>Can we trust bootstrap confidence intervals?</strong></p>
+<p>The short answer is YES, we can trust them (otherwise, why use it, right?). The only caveat is that the original sample should be a <strong>REPRESENTATIVE</strong> sample of the population. Without representativeness, we can’t do anything bootstrap or classical. This is a very important point that we (statisticians) need to keep in our mind. No matter how fancy your models and tools are, if your data is ‘garbage’, you end up with ‘garbage’ answers.</p>
+<p><br />
+</p>
+<p><strong>Are there instances where bootstrap confidence intervals fail to live up to the true capture rate?</strong></p>
+<p>Yes. Just like with classical confidence intervals, the bootstrap confidence intervals may fail to achieve the advertised capture rate. It can happen due to many reasons. One of the main ones is that the original sample is of poor quality (biased or non-representative). There are ways to improve these intervals but those modifications are beyond the scope of this course.</p>
+<p><br />
+</p>
+<p><strong>What other benefits (other than calculating standard errors of statistics and constructing a confidence intervals) do we get from the bootstrap method?</strong></p>
+<p>The most important one is the bootstrap sampling distribution. We get a visual representation of the shape and center and variability of the statistic. So why is it useful? Recall that we have no way of knowing the TRUE sampling distribution, and the bootstrap sampling distribution provides a great alternative to visualize how the TRUE sampling distribution <strong>MIGHT</strong> look like.</p>
+<p>Here are few other things to keep in mind:</p>
+<p><br />
+</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li><p>It provides a way to get a sense about the sampling distribution of any statistic.</p></li>
+<li><p>It is a very flexible technique that can be used to construct confidence intervals for a variety of parameters.</p></li>
+<li><p>In some cases, like estimating a population correlation or some other complicated parameter, there are no easy classical methods to construct a confidence interval. The existing classical methods for such problems are based on bunch of assumptions and complicated statistical maneuvers. However, the bootstrap method provides a easy to use alternative to construct confidence intervals even for complicated parameters.</p></li>
+<li><p>In some cases, like estimating a population ratio (e.g. in the case of Heart disease data), we do not have any classical method to construct a confidence interval, so the bootstrap method is our ONLY hope.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li><p>It requires more computational power than classical methods. In some cases we need to resample a LOT and it can take some time to produce the bootstrap sampling distribution of a complicated statistic (we haven’t done these in our class).</p></li>
+<li><p>It requires some coding skills to implement the bootstrap method. In our case we used the ‘mosaic’ package, which simplified lot of the work. In some cases, we have to develop our own code, which requires some coding skills.</p></li>
+<li><p>Theory behind the bootstrap method is complex. So it is hard to convince a reasonable person that this method actually works and not some voodoo science. :)</p></li>
+</ul>
+<p><br />
+</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-infamous-n-30-rule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="permutation-randomization-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
