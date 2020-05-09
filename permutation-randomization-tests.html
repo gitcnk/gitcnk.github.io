@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Permutation (Randomization) Tests | Statistics: A Critical Look</title>
+  <meta name="description" content="5 Permutation (Randomization) Tests | Statistics: A Critical Look" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Permutation (Randomization) Tests | Statistics: A Critical Look" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Permutation (Randomization) Tests | Statistics: A Critical Look" />
+  
+  
+  
+
+<meta name="author" content="CK" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-bootstrap-method.html"/>
+<link rel="next" href="p-values-jelly-beans-and-mosquitoes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics: A Critical Look</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="some-preliminary-questions.html"><a href="some-preliminary-questions.html"><i class="fa fa-check"></i><b>1</b> Some Preliminary Questions</a></li>
+<li class="chapter" data-level="2" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>2</b> Sampling Distributions</a><ul>
+<li class="chapter" data-level="2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#how-to-construct-a-sampling-distribution"><i class="fa fa-check"></i><b>2.1</b> How to Construct a Sampling Distribution?</a></li>
+<li class="chapter" data-level="2.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#some-questions-to-ponder"><i class="fa fa-check"></i><b>2.2</b> Some Questions to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html"><i class="fa fa-check"></i><b>3</b> The Infamous ‘n &gt; 30 rule’</a><ul>
+<li class="chapter" data-level="3.1" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.2" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#explorations-with-real-data"><i class="fa fa-check"></i><b>3.2</b> Explorations with Real Data</a><ul>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#nba-player-salaries"><i class="fa fa-check"></i>NBA Player Salaries</a></li>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#undergraduates-in-us-colleges-and-universities"><i class="fa fa-check"></i>Undergraduates in US Colleges and Universities</a></li>
+<li class="chapter" data-level="" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#departure-delays-in-laguardia-airport"><i class="fa fa-check"></i>Departure Delays in LaGuardia Airport</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="the-infamous-n-30-rule.html"><a href="the-infamous-n-30-rule.html#some-questions-to-ponder-1"><i class="fa fa-check"></i><b>3.3</b> Some Questions to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html"><i class="fa fa-check"></i><b>4</b> The Bootstrap Method</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-sampling-distribution"><i class="fa fa-check"></i><b>4.1</b> Bootstrap Sampling Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>4.2</b> Bootstrap Confidence Intervals</a><ul>
+<li class="chapter" data-level="" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-se-plug-in-method"><i class="fa fa-check"></i>Bootstrap SE Plug-in Method</a></li>
+<li class="chapter" data-level="" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#bootstrap-percentile-method"><i class="fa fa-check"></i>Bootstrap Percentile Method</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="the-bootstrap-method.html"><a href="the-bootstrap-method.html#things-to-ponder"><i class="fa fa-check"></i><b>4.3</b> Things to Ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html"><i class="fa fa-check"></i><b>5</b> Permutation (Randomization) Tests</a><ul>
+<li class="chapter" data-level="5.1" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#alternative-to-the-two-sample-t-test"><i class="fa fa-check"></i><b>5.1</b> Alternative to the Two Sample t-test</a></li>
+<li class="chapter" data-level="5.2" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#application-to-categorical-data"><i class="fa fa-check"></i><b>5.2</b> Application to Categorical Data</a></li>
+<li class="chapter" data-level="5.3" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#application-to-linear-regression"><i class="fa fa-check"></i><b>5.3</b> Application to Linear Regression</a><ul>
+<li class="chapter" data-level="" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="permutation-randomization-tests.html"><a href="permutation-randomization-tests.html#things-to-ponder-1"><i class="fa fa-check"></i><b>5.4</b> Things to ponder</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html"><i class="fa fa-check"></i><b>6</b> P-values, Jelly-Beans, and Mosquitoes</a><ul>
+<li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
+<li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
+<li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics: A Critical Look</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="permutation-randomization-tests" class="section level1">
+<h1><span class="header-section-number">5</span> Permutation (Randomization) Tests</h1>
+<p>In Chapter 4, we looked at a new method (The Bootstrap) to find standard errors and confidence intervals. In this chapter we are going to learn a new method to perform hypothesis tests. These tests are called Permutation tests. Unlike classical hypothesis tests, these tests are <strong>NOT</strong> based on Central Limit Theorem. We will learn the basics of these tests and their limitations through 3 examples. Let’s dive in.</p>
+<p><br />
+</p>
+<div id="alternative-to-the-two-sample-t-test" class="section level2">
+<h2><span class="header-section-number">5.1</span> Alternative to the Two Sample t-test</h2>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-50" class="example"><strong>Example 5.1  </strong></span>
+A sample of 16 healthy women aged 18 - 40 were randomly assigned to drink 24 ounces of either diet cola or water. Their urine was collected for three hours after ingestion of the beverage and calcium excretion (in mg.) was measured .</p>
+<p>The researchers were investigating whether people who drink diet cola
+tend to loose more calcium out of their system, which would increase the amount of calcium in the urine for diet cola drinkers.</p>
+Ref: Larson, Amin, Olsen, and Poth, Effect of Diet Cola on Urine Calcium Excretion, Endocrine Reviews, 31[3]: June 2010.
+</div>
+
+<p><br />
+</p>
+<p>Here are the summary statistics for the cola experiment.</p>
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Cola</th>
+<th align="left">Water</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample Mean</td>
+<td align="left">56.00 mg</td>
+<td align="left">49.125 mg</td>
+</tr>
+<tr class="even">
+<td>n</td>
+<td align="left">8</td>
+<td align="left">8</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p>Now let’s look at the following dialog:</p>
+<p><br />
+</p>
+<p><strong>You:</strong> The difference in means = 6.875 mg, so it APPEARS that the people
+who drank cola tend to lose more calcium than the people who drank
+water.</p>
+<p><strong>Cola lobbyist:</strong> This is total nonsense! This difference is just a pure coincidence.</p>
+<p><strong>You:</strong> You mean all of the high calcium values just happened to be in the
+cola group just by chance?</p>
+<p><strong>Cola lobbyist:</strong> Hell yeah! Look, you and I both know that cola is just like water, right?</p>
+<p><strong>You:</strong> No!! I don’t think so . But I’m willing to give you the benefit of the
+doubt for now, until we analyze the data.</p>
+<p><strong>Cola lobbyist:</strong> OK, here’s what I mean. Look at the Cola group and the water group
+values:</p>
+<p>Cola: 50,62,48,55,58,61,58,56</p>
+<p>Water: 48,46,54,45,53,46,53,48</p>
+<p>If, for example, you exchange the 62 (in cola group) with the 45 in the water group the difference in means will be</p>
+<p>cola_mean=49.125
+water_mean=51.25</p>
+<p>49.125 - 51.25 = -2.125 !!!!</p>
+<p>See, I told you, would you now say that water is bad! My point is: some individuals naturally have high calcium in their urine so if the cola group happens to get one such individual like in the original sample it can inflate the mean.</p>
+<p><strong>You:</strong> Not so fast, you just picked the best scenario favorable to your side.
+Why don’t we look at other possibilities.</p>
+<p><strong>Cola lobbyist:</strong> What do you mean?</p>
+<p><strong>You:</strong> Here’s what I mean. IF cola is the same as water, then we can simply start with 16 people, pick 8 at random and label them as cola group and the rest as water group. After all, according to you, cola is just like water, right? So any of these values can be just as likely to be in the cola group as in the water group. We can repeat this many times and calculate the mean difference for each random draw and see what are the likely values IF “cola is same as water”</p>
+<p><br />
+</p>
+<p>This is the main idea of the permutation tests. Under our null hypothesis, we can permute the group labels. In other words, the groups (in this case, cola and water) is not influential to the final outcome (in this case, calcium level). Let us look at the behavior of the difference in sample means if we were to permute the group labels. The way we perform this is quite simple.</p>
+<ul>
+<li><p>Step 1: Permute the group labels.</p></li>
+<li><p>Step 2: Calculate the sample means for the new groups and take the difference. Call this <span class="math inline">\(d\)</span>.</p></li>
+<li><p>Step 3: Repeat steps 1 and 2, and record all the mean differences, <span class="math inline">\(d_i\)</span>’s, for <span class="math inline">\(i=1,\ldots , N\)</span>, where <span class="math inline">\(N\)</span> is a very large number.</p></li>
+<li><p>Step 4: Plot the permutation distribution of <span class="math inline">\(d\)</span>. Then we can see, how many permutations (scenarios) had a mean difference of 6.875 or higher.</p></li>
+</ul>
+<p><br />
+</p>
+<p>The following code and plot shows the permutation distribution for the cola experiment.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">observed_difference &lt;-<span class="st"> </span><span class="kw">diffmean</span>( Calcium <span class="op">~</span><span class="st"> </span>Drink , <span class="dt">data =</span> mydata)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">PD &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">diffmean</span>( Calcium <span class="op">~</span><span class="st"> </span><span class="kw">shuffle</span>(Drink) , <span class="dt">data =</span> mydata)</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">Cola_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> PD) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="st">                  </span><span class="kw">aes</span>(<span class="dt">x =</span> diffmean) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="st">                  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="st">                  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> observed_difference, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="st">                  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Does Cola increase calcium levels in urine?&#39;</span>,</a>
+<a class="sourceLine" id="cb23-10" data-line-number="10">                       <span class="dt">subtitle =</span> <span class="st">&#39;Data source: Endocrine Reviews, 31(3), June 2010.&#39;</span>,</a>
+<a class="sourceLine" id="cb23-11" data-line-number="11">                       <span class="dt">x =</span> <span class="st">&#39;Difference in means (Water - Calcium)&#39;</span>)</a>
+<a class="sourceLine" id="cb23-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb23-13" data-line-number="13">Cola_plot</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><br />
+</p>
+<p>As you can see the observed difference in means is -6.875 (not that the value is negative because of order of subtraction, which is Water group - Calcium group ). This difference is quite unlikely <strong>IF</strong> cola has nothing to do with calcium levels. We can calculate how unlikely is this be means of a p-value. This p-value can be calculated as follows:<br />
+</p>
+<ul>
+<li><p>Step 1: Count the number of permutations that gave rise to mean difference of -6.785 or less</p></li>
+<li><p>Step2 : Divide this count by the number of simulated scenarios.<br />
+</p></li>
+</ul>
+<p>For the simulation we did, we found 10 scenarios with a mean difference of -6.875 or less which translates to a p-value of <span class="math inline">\(10/1000 = 0.01\)</span>. Remember, when you do your own simulation, your p-values would be slightly different.</p>
+<p>We can compare this p-value to the classical two sample t-test p-value.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">t.test</span>( Calcium <span class="op">~</span><span class="st"> </span>Drink, <span class="dt">data =</span> mydata)</a></code></pre></div>
+<p>The p-value from the t-test is 0.007, which is close to the permutation test p-value of 0.01. However, the t-test relies on the fact that the data comes from approximately normal population or the sample sizes are large enough to rely on the Central Limit Theorem. In this case, however, we can not be confident on either of these assumptions given the very small sample size. Therefore, the permutation test is a excellent alternative to bypass these kinds of strong assumptions and yet produce useful results. The only assumption we need to perform the permutation test is the exchangability of group labels under the null hypothesis. Let us look at another example to solidify this idea.</p>
+<p><br />
+</p>
+</div>
+<div id="application-to-categorical-data" class="section level2">
+<h2><span class="header-section-number">5.2</span> Application to Categorical Data</h2>
+
+<div class="example">
+<span id="exm:unnamed-chunk-56" class="example"><strong>Example 5.2  </strong></span>
+</div>
+
+<p>This example is from a case in the U.S. District Court for the Southern District of New York (Waisome v. Port Authority of New York &amp; New Jersey). In 1991, Felix Waisome and a group of plaintiffs sued the port authority of New York claiming racial bias against Black officers in the promotion process, because, according to him, the port authority officials were passing black officers at a lower rate compared to the white officers.</p>
+<p>508 White officers and 64 Black officers took an exam for promotion. 455 Whites officers and 50 Black officers passed the exam. The pass rate for whites (<span class="math inline">\(\hat p_{white} = 455/508 = 89.56\%\)</span>) and the pass rate for blacks (<span class="math inline">\(\hat p_{black} = 50/64 = 78.13\%\)</span>). On face value, it seems like the pass rate for whites is higher than that of blacks. As statisticians we know that this is not the real issue. The real question is: could this be due to chance?</p>
+<p>The standard method to answer this question is to use the two sample proportions tests.</p>
+<ul>
+<li><p><span class="math inline">\(H_0:\)</span> There is no difference in pass rates. <span class="math inline">\(p_{white}\)</span> = <span class="math inline">\(p_{black}\)</span></p></li>
+<li><p><span class="math inline">\(H_1:\)</span> The pass rate for whites is higher than that of blacks: <span class="math inline">\(p_{white}\)</span> &gt; <span class="math inline">\(p_{black}\)</span></p></li>
+</ul>
+<p>The p-value from the two sample proportions test can be calculated using the following R-command:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">prop.test</span>( <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">455</span>,<span class="dv">50</span>), <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">508</span>,<span class="dv">64</span>), <span class="dt">alternative =</span> <span class="st">&#39;greater&#39;</span>)</a></code></pre></div>
+<p>The p-value from the above test is 0.006, which suggests that a difference of this magnitude (89.56% vs 78.13%) in pass rates could not have happened by chance IF the TRUE pass rates of whites and blacks were the same. This test relies on the Central Limit Theorem which require large sample sizes. For the black group the sample size is 64, which is not small but not that large either. Therefore, the p-value from the test may not be that accurate. Let us now use the permutation approach to find a p-value.</p>
+<p>The main issue in question is that the police department was bias in passing the candidates. In order to answer this, we will assume that they are not bias. Under this premise an officer passing the exam does not depend on his or her race. This is what allow us to permute the race labels among the candidates. That is, we shuffle the group label and recalculate the difference in pass rates. We repeat this for lots of shuffles and build the permutation distribution as follows:<br />
+</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># Create the data frame using the counts from each group</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">race_info &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;W&#39;</span>,<span class="dv">508</span>), <span class="kw">rep</span>(<span class="st">&#39;B&#39;</span>,<span class="dv">64</span>))</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">exam_info &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">455</span>), <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">53</span>), <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">50</span>), <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">14</span>))</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">exam_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Race=</span>race_info, <span class="dt">Pass=</span>exam_info)</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">observed_difference &lt;-<span class="st"> </span><span class="dv">455</span><span class="op">/</span><span class="dv">508</span>  <span class="op">-</span><span class="st"> </span><span class="dv">50</span><span class="op">/</span><span class="dv">64</span></a>
+<a class="sourceLine" id="cb26-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">PD &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">diffprop</span>(Pass <span class="op">~</span><span class="st"> </span><span class="kw">shuffle</span>(Race), <span class="dt">data =</span> exam_data)</a>
+<a class="sourceLine" id="cb26-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb26-12" data-line-number="12">PassFail_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> PD) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-13" data-line-number="13"><span class="st">                  </span><span class="kw">aes</span>(<span class="dt">x =</span> diffprop) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-14" data-line-number="14"><span class="st">                  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-15" data-line-number="15"><span class="st">                  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> observed_difference, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-16" data-line-number="16"><span class="st">                  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Is There Evidence of Racial Bias?&#39;</span>,</a>
+<a class="sourceLine" id="cb26-17" data-line-number="17">                       <span class="dt">subtitle =</span> <span class="st">&#39;Data source: Waisome v. Port Authority. U.S District Court (1991)&#39;</span>,</a>
+<a class="sourceLine" id="cb26-18" data-line-number="18">                       <span class="dt">x =</span> <span class="st">&#39;Difference in pass rates (white - black)&#39;</span>)</a>
+<a class="sourceLine" id="cb26-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb26-20" data-line-number="20">PassFail_plot</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>As you can see in the above plot, IF the police department did not use race as a factor in passing the candidates, then it is unlikely that we observe difference of this magnitude (11.43% = 89.56% - 78.13%) in pass rates. To be precise, the observed p-value is .0086. This small p-value raises a flag about the unbiasedness of the testing procedure. Does it mean that the police department is culpable of racial bias?<br />
+</p>
+</div>
+<div id="application-to-linear-regression" class="section level2">
+<h2><span class="header-section-number">5.3</span> Application to Linear Regression</h2>
+
+<div class="example">
+<span id="exm:unnamed-chunk-60" class="example"><strong>Example 5.3  </strong></span>
+</div>
+
+<p>The final example of this chapter illustrates the flexibility of permutation tests. In this example, we will see how to apply this technique to test hypotheses about linear models. In particular, we will learn how to test a hypothesis about the slope coefficient in a simple linear regression model. The dataset we use here contain information about pizzas. You can access the dataset using the following command:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">Pizza &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&#39;https://raw.githubusercontent.com/gitcnk/Data/master/Pizza.csv&#39;</span>)</a></code></pre></div>
+<p>Suppose we are interested in how much calories a pizza has and its relationship to the amount of fat in the pizza. The following plot shows the this relationship:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p>As you can see, the relationship is linear and quite strong. The slope of the fitted line is 6.52. How do we assess whether this value is statistically significant? The classical method is to look at the t-statistic corresponding to the slope coefficient. We can state describe the test and the test statistic as follows:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> : Slope( <span class="math inline">\(\beta\)</span> ) = 0</li>
+<li><p><span class="math inline">\(H_1\)</span> : <span class="math inline">\(\beta \neq 0\)</span></p></li>
+<li><p>Test Statistic : <span class="math inline">\(\frac{\hat \beta - 0}{SE(\hat \beta)}\)</span></p></li>
+</ul>
+<p>You can easily calculate the p-value associated with this test using the following R-command:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">mymodel &lt;-<span class="st"> </span><span class="kw">lm</span>(calories <span class="op">~</span><span class="st"> </span>fat , <span class="dt">data =</span> Pizza)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">summary</span>(mymodel)</a></code></pre></div>
+<p>The p-value you get for the slope test is essentially zero. What this means is, <strong>IF</strong> fat has nothing to do with the calories in a pizza, then it is highly unlikely that we observe a slope coefficient of 6.52 by chance alone. This seems logical given the strong correlation that we see in the scatter plot above. Now let us see how to use the permutation approach to calculate the p-value for the slope coefficient.</p>
+<p>First, we need to ask is there any group label that we can permute. Recall that in all previous examples in this chapter we worked with two groups. e.g. cola vs. water, whites vs. blacks. In this case, there is no such group variable. But we can still use the permutation method. The key is with the null hypothesis. According to the null hypothesis, we assume that <strong>there is no linear relationship</strong> between fat and calories. Therefore, any of the calorie values could have occurred with any of the fat levels. Let us look at the first five rows of the data.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fat</th>
+<th align="center">Original Calorie Values</th>
+<th align="center">Shuffled Calorie Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">15</td>
+<td align="center">364</td>
+<td align="center">332</td>
+</tr>
+<tr class="even">
+<td align="left">11</td>
+<td align="center">334</td>
+<td align="center">307</td>
+</tr>
+<tr class="odd">
+<td align="left">12</td>
+<td align="center">332</td>
+<td align="center">364</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="center">341</td>
+<td align="center">334</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="center">307</td>
+<td align="center">341</td>
+</tr>
+</tbody>
+</table>
+<p>The reason we can permute the calorie values is because the null hypothesis states that fat can calories are not correlated. Hence any of the calorie values is equally likely to have occurred with any of the fat levels. This is the key point that we exploit to build our permutation distribution of slope estimates. As shown above, we shuffle the calorie values and refit the linear model and calculate the slope estimate. We repeat this process a large number of times and for each shuffle, we estimate the slope parameter. The following code and the plot shows the output of this process.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">observed_slope &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">lm</span>(calories <span class="op">~</span><span class="st"> </span>fat, <span class="dt">data =</span> Pizza))[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">PD &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">lm</span>(calories <span class="op">~</span><span class="st"> </span><span class="kw">shuffle</span>(fat), <span class="dt">data =</span> Pizza)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">Slope_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> PD) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="st">                  </span><span class="kw">aes</span>(<span class="dt">x =</span> fat) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="st">                  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="st">                  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> observed_slope, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-9" data-line-number="9"><span class="st">                  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Permutation Plot of Slope values&#39;</span>,</a>
+<a class="sourceLine" id="cb29-10" data-line-number="10">                       <span class="dt">subtitle =</span> <span class="st">&#39;Data source: Watkins, et al. (2010)&#39;</span>,</a>
+<a class="sourceLine" id="cb29-11" data-line-number="11">                       <span class="dt">x =</span> <span class="st">&#39;Slope coefficient&#39;</span>)</a>
+<a class="sourceLine" id="cb29-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb29-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb29-14" data-line-number="14">Slope_plot</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p>As we expected, under the premise of no correlation with fat and calories (null hypothesis), we expect most of the slope values to be around zero and with some spread ranging from -2.5 t0 2.5. But the observed slope of 6.52 (red dashed line) is almost impossible to occur by chance alone if there is no correlation with fat and calories. Hence we reject our null hypothesis of slope = 0 and conclude that the TRUE slope is significantly different from zero.</p>
+<p><br />
+</p>
+<p><br />
+</p>
+<div id="summary" class="section level3 unnumbered">
+<h3>Summary</h3>
+<ul>
+<li><p>Permutation tests are quite useful alternatives for classical tests when there are doubts about the assumptions behind those classical tests.</p></li>
+<li><p>We can use them in a variety of settings, two sample tests for means, two sample proportions, linear regression.</p></li>
+<li><p>The key for any permutation test is that the null hypothesis should indicate a situation where it allows us to shuffle (permute) the data.</p></li>
+</ul>
+</div>
+</div>
+<div id="things-to-ponder-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Things to ponder</h2>
+<pre><code>Can we use permutation tests in any situation?</code></pre>
+<p><strong>Answer</strong></p>
+<p>No. There are many cases where we can not use permutation tests. For example, if we have single random sample and say that we want to test the TRUE mean <span class="math inline">\(\mu\)</span> = 10. There is nothing to permute and hence we can’t use the permutation method.</p>
+<pre><code>Are the permutation tests resistant to outliers?</code></pre>
+<p><strong>Answer</strong></p>
+<p>No. The outliers may get shuffled around but theirs effects will still be there. Also, when we calculate the p-value using the observed value of the difference or slope which are based on the original data. As a result the effects of the outliers will not disappear. Therefore, as with any analysis, it is very important to deal with outliers appropriately. Reminds me of a quote from two of my heroes in statistics: “There is no substitute for facing the facts in detail.” - John Tukey and Fredrick Mosteller.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-bootstrap-method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="p-values-jelly-beans-and-mosquitoes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
