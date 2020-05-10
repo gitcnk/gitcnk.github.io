@@ -165,6 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
 <li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
 <li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -291,7 +292,7 @@ OR</p></li>
 <li>White males with dark hair and blue eyes with low education and in low income level vs. White females in with blond hair and green eyes with high education and in high income level.</li>
 </ol>
 <p>The choices are endless (<strong>and stupid!</strong>). This kind of subgroup testing is what I call slicing and dicing the data. When you perform a lot of tests like this, the likelihood of you finding a statistically significant p-value is very high. In fact, you can show (we’ll do it in class) that this probability grows exponentially with the number of different subgroup tests you perform. So you are bound to find “something” even if there is nothing there. The following cartoon illustrates this phenomena quite beautifully.</p>
-<p><strong>The jelly bean story:</strong> <a href="https://xkcd.com/882/" class="uri">https://xkcd.com/882/</a></p>
+<p><strong>The Jelly Bean Story:</strong> <a href="https://xkcd.com/882/" class="uri">https://xkcd.com/882/</a></p>
 <p><strong>Another funny one:</strong> <a href="https://xkcd.com/1478/" class="uri">https://xkcd.com/1478/</a></p>
 <p>Now you might say, “Well, this is a cooked-up example. No one in their right mind do such egregious things”. You are absolutely right. But the reality is entirely different from what we’d like to believe. The following article is a powerful example of this unfortunate practice.</p>
 <p><strong>A recent example: Cornell scientist turned shoddy data into viral studies about what we eat:</strong></p>
@@ -376,7 +377,12 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <p><br />
 </p>
 <hr />
-<p><strong>P-values in the Courtroom</strong></p>
+</div>
+<div id="a-question-to-ponder" class="section level2">
+<h2><span class="header-section-number">6.4</span> A Question to Ponder</h2>
+<pre><code>Should we not bother about statistically insignificant values?</code></pre>
+<p><strong>Answer</strong>:
+No. Again, it is the context that matters the most. The following example from the U.S. Supreme Court highlights this point quite effectively.</p>
 <p>The Supreme Court of the United States in March 2011 decided the case Matrixx Inc vs. Siracusano. The company Matrixx Inc. is the manufacturer of the cold medicine Zicam. They publicly dismissed reports linking Zicam and anosmia (loss of the sense of smell) when it had evidence of a biological link between ingredients of Zicam and anosmia.</p>
 <p>They used the term “statistically significant” to hide their misdeeds. They told a lower court that they did not disclose the adverse effects because the differences between Zicam users and others were <strong>not statistically significant</strong>. But the Supreme Court disagrees. In delivering the opinion for a unanimous Court, justice Sonia Sotomayor said:</p>
 <p><em>&quot;A lack of statistically significant data does not mean that medical experts have no reliable basis for inferring a causal link between a drug and adverse events.</em></p>
