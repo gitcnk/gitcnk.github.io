@@ -165,7 +165,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
 <li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
 <li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html"><i class="fa fa-check"></i><b>7</b> Chi-Squared Test and its Variants</a><ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html#goodness-of-fit-test"><i class="fa fa-check"></i><b>7.1</b> Goodness of Fit Test</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
@@ -196,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Suppose we want to estimate the mean of this population using only a random sample of say, <span class="math inline">\(n=30\)</span>. The following code will do just that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">mysample &lt;-<span class="st"> </span><span class="kw">sample</span>(mypop, <span class="dt">size =</span> <span class="dv">30</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">mean</span>(mysample)</a></code></pre></div>
@@ -227,21 +231,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <hr />
-<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>These distributions (above) are called sampling distributions. In particular, the first one is the sampling distribution of the sample mean and the second is the sampling distribution of the sample maximum. Therefore we can define a sampling distribution of a statistic as follows.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-9" class="definition"><strong>Definition 2.1  </strong></span><strong>Sampling Distribution of a sample statistic</strong> is defined as the distribution of values of that statistic under repeated sampling.</p>
+<p><span id="def:unnamed-chunk-24" class="definition"><strong>Definition 2.1  </strong></span><strong>Sampling Distribution of a sample statistic</strong> is defined as the distribution of values of that statistic under repeated sampling.</p>
 </div>
 
 <p>Note that the key phrase of the above definition: ‘Sampling’. It tells us that this has something to with samples coming from a population. The next term is ‘Distribution’. It tells us how the sample statistic chages from sample to sample. Always remember to think about this twp terms carefully for few seconds before you answer any question about a sample statistic.</p>
 <p>Another important thing to remember is that the sampling distribution always depends on the size of the sample (<span class="math inline">\(n\)</span>) we draw from the population. This is a crucial fact. For example, the above two sampling distributions are created from samples of size <span class="math inline">\(n=30\)</span>. Always mention this fact (sample size) when you describe a sampling distribution.</p>
 <p>To put this idea in perspective, let’s compare the two sampling distrubutions of <span class="math inline">\(\bar x\)</span> and sample maximum for samples of size <span class="math inline">\(n=100\)</span>. Do you see anything special?</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <hr />
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>You’ll notice the following about the sample mean:</p>
 <table>
 <thead>
@@ -304,24 +308,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 is defined more technically as follows.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-12" class="definition"><strong>Definition 2.2  </strong></span><strong>Center of the sampling distribution</strong> It is defined as the expected value of the statistic. It is a measure we use to see whether our statistic, on average, hits the target (population parameter).
+<span id="def:unnamed-chunk-27" class="definition"><strong>Definition 2.2  </strong></span><strong>Center of the sampling distribution</strong> It is defined as the expected value of the statistic. It is a measure we use to see whether our statistic, on average, hits the target (population parameter).
 </div>
 
 <p>Here is an example:</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-13" class="example"><strong>Example 2.2  </strong></span>Consider the sample mean <span class="math inline">\(\bar x = \frac{\sum_{i=1}^n x_i}{n}\)</span>. The expected value of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(E(\bar x) = E\left[\frac{\sum_{i=1}^n x_i}{n}\right] = \mu\)</span>. Can you think how I got this value?</p>
+<p><span id="exm:unnamed-chunk-28" class="example"><strong>Example 2.2  </strong></span>Consider the sample mean <span class="math inline">\(\bar x = \frac{\sum_{i=1}^n x_i}{n}\)</span>. The expected value of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(E(\bar x) = E\left[\frac{\sum_{i=1}^n x_i}{n}\right] = \mu\)</span>. Can you think how I got this value?</p>
 </div>
 
 
 <div class="definition">
-<span id="def:unnamed-chunk-14" class="definition"><strong>Definition 2.3  </strong></span><strong>The standard Error(variablity of the sampling distribution)</strong> is defined as the standard deviation of the statistic.
+<span id="def:unnamed-chunk-29" class="definition"><strong>Definition 2.3  </strong></span><strong>The standard Error(variablity of the sampling distribution)</strong> is defined as the standard deviation of the statistic.
 </div>
 
 <p>Here is an example.</p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-15" class="example"><strong>Example 2.3  </strong></span>Consider the sample mean <span class="math inline">\(\bar x = \frac{\sum_{i=1}^n x_i}{n}\)</span>. The SE of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\sigma/\sqrt n\)</span>, where <span class="math inline">\(\sigma\)</span> is the population standard deviation. Can you think how I got this value?
+<span id="exm:unnamed-chunk-30" class="example"><strong>Example 2.3  </strong></span>Consider the sample mean <span class="math inline">\(\bar x = \frac{\sum_{i=1}^n x_i}{n}\)</span>. The SE of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\sigma/\sqrt n\)</span>, where <span class="math inline">\(\sigma\)</span> is the population standard deviation. Can you think how I got this value?
 </div>
 
 <p>Calculating the expected value and standard error in the above example is not that difficult. You will be doing this as a homework assignment for this chapter. The key is to find the variance of <span class="math inline">\(\bar x\)</span>. That is, find <span class="math inline">\(V(\bar x)\)</span> first. Then take the square root of it to find the SE.</p>

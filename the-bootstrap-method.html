@@ -165,7 +165,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
 <li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
 <li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html"><i class="fa fa-check"></i><b>7</b> Chi-Squared Test and its Variants</a><ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html#goodness-of-fit-test"><i class="fa fa-check"></i><b>7.1</b> Goodness of Fit Test</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
@@ -195,12 +199,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Bootstrap Sampling Distribution</h2>
 
 <div class="example">
-<span id="exm:unnamed-chunk-33" class="example"><strong>Example 4.1  </strong></span>Recall the service time distribution in Example 2.1. Service times to complete a task like repir a car, restaurent take-out order, etc. typically have a distribution of this type.
+<span id="exm:unnamed-chunk-49" class="example"><strong>Example 4.1  </strong></span>Recall the service time distribution in Example 2.1. Service times to complete a task like repir a car, restaurent take-out order, etc. typically have a distribution of this type.
 </div>
 
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>What we normally see is a sample from the above population which may look like this:</p>
@@ -230,7 +234,7 @@ A single random sample from the population. In this case a sample of size <span 
 </ul>
 <p><br />
 The following plot shows the bootstrap sampling distribution of <span class="math inline">\(\bar x\)</span> constructed out of the above random sample.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>One of the main reasons that we use the Bootstrap method is to get an idea of the uncertainty of our sample mean (<span class="math inline">\(\bar x\)</span>). In our case, the sample mean was 22.01. But we wanted to find the uncertainty of this estimate which is nothing but the spread of the true sampling distribution of <span class="math inline">\(\bar x\)</span>. Since the bootstrap sampling distribution is an approximation of the true sampling distribution, we can calculate the spread of the bootstrap sampling distribution to get an estimate of the true standard error. As the table below shows, this method is extremely accurate.</p>
@@ -259,18 +263,18 @@ After experimenting with the app you must be (hopefully) convinced that the Boot
 </p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-39" class="example"><strong>Example 4.2  </strong></span>Suppose you are interested in the correlation between amount of sleep and GPA.
+<span id="exm:unnamed-chunk-55" class="example"><strong>Example 4.2  </strong></span>Suppose you are interested in the correlation between amount of sleep and GPA.
 </div>
 
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>The sample correlation coefficient (<span class="math inline">\(r\)</span>) for this data is 0.88. As before, we would like to know the standard error (SE) of this statistic. The sample correlation coefficient is defined as
 <span class="math display">\[ r = \frac{\sum_{i=1}^n (x_i - \bar x)(y_i - \bar y) }{sd_x sd_y}\]</span></p>
 <p>It is virtually impossible to find the variance (<span class="math inline">\(Var[ \ r\ ]\)</span>) of the above expression. Note that ratios of random variables are notoriously difficult to handle. But we can use the Bootstrap method to find an estimate of the SE using the Bootstrap sampling distribution of the correlation coefficient, <span class="math inline">\(r\)</span>. The following plot shows the Bootstrap sampling distribution of <span class="math inline">\(r\)</span> from the above dataset.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p><br />
 Based on this analysis we can say the following about the sleep v. GPA data:</p>
 <table>
@@ -296,7 +300,7 @@ Based on this analysis we can say the following about the sleep v. GPA data:</p>
 </p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-42" class="example"><strong>Example 4.3  </strong></span>This was a study on in-hospital deaths from myocardial infarction with ST elevation (STEMI) which was done in Oregon. Summary stats of the study is as follows:</p>
+<p><span id="exm:unnamed-chunk-58" class="example"><strong>Example 4.3  </strong></span>This was a study on in-hospital deaths from myocardial infarction with ST elevation (STEMI) which was done in Oregon. Summary stats of the study is as follows:</p>
 <ul>
 <li>9 hospitals in the Providence Health system in Oregon.</li>
 <li>Study period : from 2002 to 2003.</li>
@@ -521,7 +525,7 @@ Based on this analysis we can say the following about the sleep v. GPA data:</p>
 <p>As before, we’ll resample the 13 ratios with replacement and build the bootstrap sampling distribution. Then we measure the spread (standard deviation) of this bootstrap distribution to find the standard error of the ratio.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>The spread of the bootstrap sampling distribution (standard deviation) is 0.1189. Combining this with the mean ratio of 0.8, we can say that the death rate of this hospital system is 0.8 times the national rate, with an uncertainty of 0.12. This is encouraging news to the hospital system. In addition, you can see from the above plot, a large number of the bootstrap ratios are less than one which suggests that the <strong>TRUE</strong> death rate would probably be less than 1 as well. But we don’t quite know that. That is the kind of inference we would like to draw. We will get to that in the next section. But before that we need take stock of what we’ve learned so far.</p>
@@ -553,7 +557,7 @@ Based on this analysis we can say the following about the sleep v. GPA data:</p>
 <p>The second method is more flexible, in that, it does not require the bootstrap sampling distribution to be normal. If we are calculating a 95% confidence interval, we simply find the <span class="math inline">\(2.5^{th}\)</span> and the <span class="math inline">\(97.5^{th}\)</span> percentiles of the bootstrap sampling distribution and those are our lower and upper confidence limits. For example, for the service time data, the confidence bounds are shown in the figure below.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>The 95% bootstrap confidence interval for the TRUE average service time (<span class="math inline">\(\mu\)</span>) is [14.74, 30.17]. The corresponding 95% classical confidence interval is [13.83, 30.26]. As you can see, the two intervals do not differ much. Can you think what the reason might be?</p>
@@ -565,14 +569,14 @@ Based on this analysis we can say the following about the sleep v. GPA data:</p>
 <p>As in the case of calculating standard errors, the real benefit of this method comes when we <strong>DO NOT</strong> have classical confidence intervals or when it is <strong>extremely difficult</strong> to find one. Consider the correlation example we looked at (Example 4.2). There is no easy way to find a confidence interval for the TRUE correlation (<span class="math inline">\(\rho\)</span>). But the bootstrap provides an easy alternative. The following plot shows the confidence bounds calculated from the correlation data.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>The 95% bootstrap confidence interval is [0.8 , 0.94]. As you can see in the above plot, the bootstrap sampling distribution is quite skewed. Yet we can use the bootstrap percentile method to find a 95% confidence interval for the unknown parameter. This is another benefit of bootstrap confidence intervals. They do not require that the sampling distribution of the sample statistic being normal. As you recall, normality of the sampling distribution is a crucial assumption in classical confidence intervals that are based on the central limit theorem.</p>
 <p>To wrap up this section, let us calculate a 95% bootstrap confidence interval for the death rate data. The following plot shows the confidence bounds.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>The 95% bootstrap confidence interval is for the TRUE observed/expected death ratio is [0.56 , 1.03]. This is very important information for the hospital system. If you recall, the mean sample ratio was 0.8, which suggested that this hospital system is doing “better” compared to the national rate. But the confidence interval gave us a better understanding of the situation. Based on this interval, you can conclude that the this hospital system is not that different from the nation in terms of heart disease deaths. The apparent 0.8 (‘better’ performance) is a result of chance. Can you think how I arrived at this conclusion? That would be part of your HW :)</p>
 </div>
 </div>

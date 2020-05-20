@@ -165,7 +165,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
 <li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
 <li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html"><i class="fa fa-check"></i><b>7</b> Chi-Squared Test and its Variants</a><ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html#goodness-of-fit-test"><i class="fa fa-check"></i><b>7.1</b> Goodness of Fit Test</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
@@ -195,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Alternative to the Two Sample t-test</h2>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-50" class="example"><strong>Example 5.1  </strong></span>
+<p><span id="exm:unnamed-chunk-66" class="example"><strong>Example 5.1  </strong></span>
 A sample of 16 healthy women aged 18 - 40 were randomly assigned to drink 24 ounces of either diet cola or water. Their urine was collected for three hours after ingestion of the beverage and calcium excretion (in mg.) was measured .</p>
 <p>The researchers were investigating whether people who drink diet cola
 tend to loose more calcium out of their system, which would increase the amount of calcium in the urine for diet cola drinkers.</p>
@@ -230,7 +234,7 @@ Ref: Larson, Amin, Olsen, and Poth, Effect of Diet Cola on Urine Calcium Excreti
 </table>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>Now let’s look at the following dialog:</p>
 <p><br />
 </p>
@@ -281,7 +285,7 @@ Why don’t we look at other possibilities.</p>
 <a class="sourceLine" id="cb23-11" data-line-number="11">                       <span class="dt">x =</span> <span class="st">&#39;Difference in means (Water - Calcium)&#39;</span>)</a>
 <a class="sourceLine" id="cb23-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb23-13" data-line-number="13">Cola_plot</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>As you can see the observed difference in means is -6.875 (not that the value is negative because of order of subtraction, which is Water group - Calcium group ). This difference is quite unlikely <strong>IF</strong> cola has nothing to do with calcium levels. We can calculate how unlikely is this be means of a p-value. This p-value can be calculated as follows:<br />
@@ -302,7 +306,7 @@ Why don’t we look at other possibilities.</p>
 <h2><span class="header-section-number">5.2</span> Application to Categorical Data</h2>
 
 <div class="example">
-<span id="exm:unnamed-chunk-56" class="example"><strong>Example 5.2  </strong></span>
+<span id="exm:unnamed-chunk-72" class="example"><strong>Example 5.2  </strong></span>
 </div>
 
 <p>This example is from a case in the U.S. District Court for the Southern District of New York (Waisome v. Port Authority of New York &amp; New Jersey). In 1991, Felix Waisome and a group of plaintiffs sued the port authority of New York claiming racial bias against Black officers in the promotion process, because, according to him, the port authority officials were passing black officers at a lower rate compared to the white officers.</p>
@@ -337,7 +341,7 @@ Why don’t we look at other possibilities.</p>
 <a class="sourceLine" id="cb26-18" data-line-number="18">                       <span class="dt">x =</span> <span class="st">&#39;Difference in pass rates (white - black)&#39;</span>)</a>
 <a class="sourceLine" id="cb26-19" data-line-number="19"></a>
 <a class="sourceLine" id="cb26-20" data-line-number="20">PassFail_plot</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p>As you can see in the above plot, IF the police department did not use race as a factor in passing the candidates, then it is unlikely that we observe difference of this magnitude (11.43% = 89.56% - 78.13%) in pass rates. To be precise, the observed p-value is .0086. This small p-value raises a flag about the unbiasedness of the testing procedure. Does it mean that the police department is culpable of racial bias?<br />
 </p>
 </div>
@@ -345,13 +349,13 @@ Why don’t we look at other possibilities.</p>
 <h2><span class="header-section-number">5.3</span> Application to Linear Regression</h2>
 
 <div class="example">
-<span id="exm:unnamed-chunk-60" class="example"><strong>Example 5.3  </strong></span>
+<span id="exm:unnamed-chunk-76" class="example"><strong>Example 5.3  </strong></span>
 </div>
 
 <p>The final example of this chapter illustrates the flexibility of permutation tests. In this example, we will see how to apply this technique to test hypotheses about linear models. In particular, we will learn how to test a hypothesis about the slope coefficient in a simple linear regression model. The dataset we use here contain information about pizzas. You can access the dataset using the following command:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">Pizza &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&#39;https://raw.githubusercontent.com/gitcnk/Data/master/Pizza.csv&#39;</span>)</a></code></pre></div>
 <p>Suppose we are interested in how much calories a pizza has and its relationship to the amount of fat in the pizza. The following plot shows the this relationship:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 <p>As you can see, the relationship is linear and quite strong. The slope of the fitted line is 6.52. How do we assess whether this value is statistically significant? The classical method is to look at the t-statistic corresponding to the slope coefficient. We can state describe the test and the test statistic as follows:</p>
 <ul>
 <li><span class="math inline">\(H_0\)</span> : Slope( <span class="math inline">\(\beta\)</span> ) = 0</li>
@@ -414,7 +418,7 @@ Why don’t we look at other possibilities.</p>
 <a class="sourceLine" id="cb29-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb29-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb29-14" data-line-number="14">Slope_plot</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <p>As we expected, under the premise of no correlation with fat and calories (null hypothesis), we expect most of the slope values to be around zero and with some spread ranging from -2.5 t0 2.5. But the observed slope of 6.52 (red dashed line) is almost impossible to occur by chance alone if there is no correlation with fat and calories. Hence we reject our null hypothesis of slope = 0 and conclude that the TRUE slope is significantly different from zero.</p>
 <p><br />
 </p>

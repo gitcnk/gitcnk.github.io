@@ -165,7 +165,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#what-is-a-p-value"><i class="fa fa-check"></i><b>6.1</b> What is a p-value?</a></li>
 <li class="chapter" data-level="6.2" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#p-values-and-large-samples."><i class="fa fa-check"></i><b>6.2</b> P-values and Large Samples.</a></li>
 <li class="chapter" data-level="6.3" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#slicing-and-dicing-the-data"><i class="fa fa-check"></i><b>6.3</b> Slicing and Dicing the Data</a></li>
+<li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html"><i class="fa fa-check"></i><b>7</b> Chi-Squared Test and its Variants</a><ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html#goodness-of-fit-test"><i class="fa fa-check"></i><b>7.1</b> Goodness of Fit Test</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
@@ -195,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p><strong>Sampling Distributions of the Sample Mean</strong></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>Carefully examine the plots above. In particular, pay attention to the following:</p>
 <ul>
 <li>shape</li>
@@ -208,7 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Why is this important to us?</p>
 <p>First, the normal distribution is something that is easy to understand and we know how to calculate probabilities using the normal model. Also, recall the “68-95-99.7% rule” which describes how the probabilities change with respect to the standard deviation (spread) of the model. So, anything that follows a normal model is good news for the statistician, because we know a LOT about this model.</p>
-<p>Second, the spread (standard deviation) decreases as <span class="math inline">\(n\)</span> increases. This is encouraging because it ensures that for larger samples we are not too far off from the “center” of the distribution which happens to be very close to the true mean.</p>
+<p>Second, the spread (standard deviation) decreases as <span class="math inline">\(n\)</span> increases. This is encouraging because it ensures that for larger samples we are not too far off from the “center” of the distribution which happens to be very close to the true mean. The following plot highlights how the sampling distribution concentrates around the true mean by ploting all 4 plots in the same x-scale.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>In fact, These facts were discovered a long time ago and they are summarized in one of the celebrated theorems in statistics. It is called the <strong>Central Limit Theorem</strong>. It says, under some conditions, the sample mean <span class="math inline">\(\bar x\)</span> follows a normal model with center being at the true population mean and the spread decreases at a rate of <span class="math inline">\(1/\sqrt n\)</span>. We can denote this more succinctly as follows:<br />
 <span class="math display">\[ \bar x \sim N(\mu , \frac{\sigma}{\sqrt n})\]</span></p>
 <p>We will explore this theorem further in this chapter. But, let us first look at an example ( a statistic) that do not agree with the Central Limit Theorem. This example helps us to understand the core idea of this theorem.</p>
@@ -216,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p><strong>Sampling Distributions of the Sample Maximum</strong></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>You’ll notice immediately that the shape does not look normal even for <span class="math inline">\(n=300\)</span>. Also, the spread does not decrease that much. In fact, the spread is fairly constant across all 4 distributions. This is NOT an accident. The reason that this statistic, the sample maximum, does not obey the Central Limit Theorem is because it is NOT an average constructed from the sample. This is the core idea of this theorem. The normal behavior of the sampling distribution is ONLY applicable to sample averages. Here is another example to demonstrate this.</p>
 <p>Suppose we want to know the percentage of binge drinkers in college campuses. A good point estimate for this parameter is the sample proportion <span class="math inline">\(\hat p\)</span>. What is the sampling distribution of this statistic <span class="math inline">\(\hat p\)</span>? Let’s create a small simulation to find this out. Here are the steps:</p>
 <ul>
@@ -243,14 +248,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb9-17" data-line-number="17"><span class="st">  </span><span class="kw">labs</span>( <span class="dt">title =</span> <span class="st">&#39;Sampling Distribution of phat&#39;</span>,</a>
 <a class="sourceLine" id="cb9-18" data-line-number="18">        <span class="dt">subtitle =</span> <span class="st">&#39;Sample size n = 20&#39;</span>,</a>
 <a class="sourceLine" id="cb9-19" data-line-number="19">                     <span class="dt">x =</span> <span class="st">&#39;phat&#39;</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>As you can see, for <span class="math inline">\(n=20\)</span> the sampling distribution of <span class="math inline">\(\hat p\)</span> is somewhat skewed. We can increase the sample size and see what happens to the sampling distribution.</p>
 <p><br />
 </p>
 <p>The following plots shows relationship of <span class="math inline">\(n\)</span> with the shape and spread of the sampling distribution.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>It seems like the Central Limit Theorem is at play. That is, the sampling distribution of <span class="math inline">\(\hat p\)</span> looks normal for large <span class="math inline">\(n\)</span>. But, we know that the theorem only applies to AVERAGES. Now you might wonder is <span class="math inline">\(\hat p\)</span> an average?</p>
@@ -308,17 +313,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>NBA Player Salaries</h3>
 
 <div class="example">
-<span id="exm:unnamed-chunk-20" class="example"><strong>Example 3.1  </strong></span>NBA player salaries in 2016 season (Kolby Bryant’s last season). As with any other salary distribution, these values are skewed with few players earning a LOT.
+<span id="exm:unnamed-chunk-36" class="example"><strong>Example 3.1  </strong></span>NBA player salaries in 2016 season (Kobe Bryant’s last season). As with any other salary distribution, these values are skewed with few players earning a LOT.
 </div>
 
 <p><br />
 </p>
 <p>The following plots show the population distribution of NBA player salaries in 2016.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>The following plots show the sampling distributions are made from samples from this <strong>population</strong>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="1152" /><br />
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="1152" /><br />
 </p>
 <p><strong>Observations</strong></p>
 <p>The first thing you will notice that at <span class="math inline">\(n=30\)</span>, the skewness is quite visible. At <span class="math inline">\(n=50\)</span>, it is still slightly skewed. So may be we ought to modify the “rule” as <span class="math inline">\(n&gt;50\)</span>?</p>
@@ -326,11 +331,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="undergraduates-in-us-colleges-and-universities" class="section level3 unnumbered">
 <h3>Undergraduates in US Colleges and Universities</h3>
 <p>The second example is from ALL US colleges and universities. Note that there are about 5000 colleges and universities in the US. However, there are many missing datapoints since it is hard to find all data from all institutions. As a result the population size is 1269. In this example, we are interested in the undergraduate population in US colleges and universities. Here is the population distribution.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p><br />
 </p>
 <p>The following plots show the sampling distributions are made from random samples from the above <strong>population</strong>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="1152" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="1152" /></p>
 <p><br />
 </p>
 <p>Even this example, at <span class="math inline">\(n=30\)</span> the skewness is quite visible. At <span class="math inline">\(n=50\)</span> the skewness is still there. Even at <span class="math inline">\(n=100\)</span>, if you look at carefully you’ll see that there is a slight skewness. So may be the rule should be <span class="math inline">\(n&gt;100\)</span>?</p>
@@ -341,14 +346,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The dataset we are looking at consists of ALL flights that departed from LaGuardia airport in 2017 from the three main carriers (American Airlines, Delta, and United). That is, all departures from Jan 1 2017 to Dec 31 2017. The variable of interest is departure delay time. First, let’s take a look at the population distribution of departure delays.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>Now let’s look at the corresponding sampling distribution for the sample mean.</p>
 <p><br />
 </p>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="1152" /><br />
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="1152" /><br />
 </p>
 <p>You can clearly see that none of the above plots look normally distributed. Let us increase the sample size even further and see at what point it starts to look normal.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="1152" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="1152" /></p>
 <p>The above plots underscore the main point of this chapter. The common belief that if <span class="math inline">\(n&gt;30\)</span> the CLT is applicable for sample means. This is a very misguided notion. The above plots demonstrate that for this dataset the sample size <span class="math inline">\(n\)</span> should be around 1000(!) to see a symmetric, bell shaped sampling distribution.</p>
 <p>By now, hopefully, you are convinced that there is a problem in the common understanding of the Central Limit Theorem. The main point in this chapter is to be aware of this issue and be very cautious in using the CLT.</p>
 <p><br />
@@ -377,7 +382,7 @@ If you look back the simulated data examples and real data examples you’ll see
 to the entire population?</code></pre>
 <p><strong>Answer:</strong>
 This one is tricky. Yes, we never have access to the entire population. All we have is a single random sample. If our sampling process had done a good job in capturing the variance in the population then it will provide important clues about the skewness and presence of extreme values in the population. For example, here are two random sample of sizes <span class="math inline">\(n=30\)</span> and <span class="math inline">\(n=100\)</span> respectively from the flight delay example.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="1152" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="1152" /></p>
 <p><br />
 </p>
 <p>As you can see from the above two plots, the bigger sample was able able to capture more of the variance in the population but still failed to include some of the really large delay times even with <span class="math inline">\(n=100\)</span>. But, this is where the statisticians need to step in. We can raise a red flag against anyone who is tempted to use the CLT with a sample like this for hypothesis testing or confidence intervals. We can educate them to see the danger of using CLT with a sample like this.</p>

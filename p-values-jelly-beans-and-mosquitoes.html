@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="permutation-randomization-tests.html"/>
-
+<link rel="next" href="chi-squared-test-and-its-variants.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -168,6 +168,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#a-question-to-ponder"><i class="fa fa-check"></i><b>6.4</b> A Question to Ponder</a></li>
 <li class="chapter" data-level="" data-path="p-values-jelly-beans-and-mosquitoes.html"><a href="p-values-jelly-beans-and-mosquitoes.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html"><i class="fa fa-check"></i><b>7</b> Chi-Squared Test and its Variants</a><ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-test-and-its-variants.html"><a href="chi-squared-test-and-its-variants.html#goodness-of-fit-test"><i class="fa fa-check"></i><b>7.1</b> Goodness of Fit Test</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://www.hamilton.edu" target="blank">Hamilton College</a></li>
 </ul>
@@ -219,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As statisticians, we love large samples. The more information we have the better. However, we need be careful with the p-values that we get when we are dealing with very large samples. This goes at the heart of data analysis. That is, we should pay a <strong>LOT</strong> of attention to context when dealing with numbers. After all, data is simply numbers with a context. Let’s look at the following example:</p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-67" class="example"><strong>Example 6.1  </strong></span>
+<span id="exm:unnamed-chunk-83" class="example"><strong>Example 6.1  </strong></span>
 </div>
 
 <p>Suppose you have two independent sample from two population and you wan to test the following hypothesis:</p>
@@ -231,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">mydata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&#39;https://raw.githubusercontent.com/gitcnk/Data/master/very_large_sample.csv&#39;</span>)</a></code></pre></div>
 <p><br />
 The plots below clearly shows that the two samples are almost identical both in shape and spread. Both samples have almost the same mean and median.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="1248" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="1248" /></p>
 <table>
 <thead>
 <tr class="header">
@@ -274,7 +277,7 @@ With some thought, and some rearranging of terms in the expression above, you’
 <h2><span class="header-section-number">6.3</span> Slicing and Dicing the Data</h2>
 <p>The next point that we want to look at is not a problem with p-values. It is a problem with us (the practitioners of statistics)! In practice, when we
 are working with datasets with may variables, it is quite tempting to perform lots of analyses hoping to find something interesting. For example, consider the heart rate example we discussed above. Your main goal was to see whether males and females have different average heart rates. Suppose you collected data from many individuals and in addition to their heart rates and gender you’ve collected other information like, race, hair color, eye color, income level (high, medium, low), education level, etc.</p>
-<p><strong>You:</strong> Wait, why are you collecting all these other data?</p>
+<p><strong>You:</strong> Wait, why are you collecting all these other data?.</p>
 <p><strong>Statistician:</strong> Well…, they are here for the test and we just wanted to get some background information. After all, it does not cost us or them anything to have this extra information. It is better to have more than less, right?</p>
 <p><strong>You:</strong> I guess…</p>
 <p>This is where the trouble starts. Suppose you conduct the test and you did not find any difference between the two groups (males vs. females). If you are gung ho about your theory(hypothesis) that there exist some difference in heart rates between males and females, then you will be quite disappointed to see that the data says something contrary to your hypothesis. Rather than accept the this reality, you go on quest to <strong>“prove” it somehow</strong>. That is, you start <strong>torturing the data until it confess</strong>. What do I mean by this?</p>
@@ -302,7 +305,7 @@ OR</p></li>
 <p>The data:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">mydata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&#39;https://raw.githubusercontent.com/gitcnk/Data/master/FlightDelays2017.csv&#39;</span>)</a></code></pre></div>
 <p>Here is the plot:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -409,8 +412,8 @@ No. Again, it is the context that matters the most. The following example from 
           </div>
         </div>
       </div>
-<a href="permutation-randomization-tests.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="permutation-randomization-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chi-squared-test-and-its-variants.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
